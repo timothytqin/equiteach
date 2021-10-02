@@ -6,9 +6,10 @@ import DonationItem from "../components/DonationItem";
 
 export default function DonationLeaderboard({ data }) {
   const styles = {
-    header: { padding: 10, textAlign: "center" },
+    header: { padding: 10, textAlign: "center", maxWidth: "13rem" },
     title: {
-      fontSize: 24,
+      fontSize: 20,
+      color: "#2f2e40",
     },
   };
 
@@ -30,7 +31,7 @@ export default function DonationLeaderboard({ data }) {
           Donations Leaderboard
         </Typography>
       </Grid>
-      {[getDonatedTickers(data)].map((ticker, index) => (
+      {getDonatedTickers(data).map((ticker, index) => (
         <DonationItem data={data} ticker={ticker} rank={index + 1} />
       ))}
     </Grid>
