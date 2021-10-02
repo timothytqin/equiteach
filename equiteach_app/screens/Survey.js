@@ -7,21 +7,25 @@ import { theme } from "../theme";
 import CustomText from "../components/CustomText";
 import Card from "../components/Card";
 import Ratings from "../components/Ratings";
+import { Icon } from "react-native-elements";
 
 export default function Survey() {
 	const user = {
 		name: "John Doe",
 		subjects: ["Calculus I", "Calculus II"],
 		teachingStyles: {
-			A: 5,
-			B: 3,
-			C: 2,
-			D: 4,
+			Authority: 5,
+			Coach: 3,
+			Activity: 2,
+			Delegator: 4,
+
 		},
 		estimatedCost: 5.55,
 	};
 	return (
+
 		<Container style={{ paddingHorizontal: 30, paddingVertical: 80 }}>
+			<ScrollView>
 			<Card>
 				<CustomText
 					value={user.name}
@@ -42,13 +46,14 @@ export default function Survey() {
 					color={theme.white}
 					center
 				/>
-				<View style={{ marginVertical: 10 }}>
+				<View style={{ marginVertical: 0 }}>
 					<CustomText value="Expertise" size={16} bold />
 					<View
 						style={{
 							flexDirection: "row",
 							flexWrap: "wrap",
-							marginVertical: 30,
+							marginVertical: 0,
+							alignSelf:'center'
 						}}
 					>
 						{user.subjects.map((subject) => (
@@ -123,9 +128,10 @@ export default function Survey() {
 							borderRadius: 70,
 							backgroundColor: theme.white,
 						}}
-					/>
+					><Icon></Icon></View>
 				</View>
 			</Card>
+			</ScrollView>
 		</Container>
 	);
 }

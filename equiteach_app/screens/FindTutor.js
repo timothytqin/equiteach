@@ -1,42 +1,54 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Image, TextInput } from "react-native";
+import { useFonts } from 'expo-font';
 import Container from "../components/Container";
-import pfp from "../assets/pfp.png";
+import { useNavigation } from '@react-navigation/native';
+import pfp from "../assets/tutor.png";
 import CustomButton from "../components/CustomButton";
 import { theme } from "../theme";
 import CustomText from "../components/CustomText";
 import Card from "../components/Card";
 
 export default function FindTutor() {
+	const [loaded] = useFonts({
+		A: require('../assets/A.ttf'),
+		F: require('../assets/F.ttf')
+	  });
+	  
+	  if (!loaded) {
+		return null;
+	  }
+	const navigation = useNavigation();
 	return (
 		<Container>
 			<View style={{ padding: 40 }}>
 				<Card>
-					<CustomText value="Find a tutor" color={theme.white} size={32} bold />
+					<CustomText value="Find a tutor" color={theme.white} size={20} bold />
 					<CustomText
 						value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
 						color={theme.white}
-						size={24}
+						size={16}
 					/>
 					<View style={styles.entry}>
-						<CustomText value="Subject" color={theme.white} bold />
+						<CustomText value="Subject" size={10} color={theme.white} bold />
 						<TextInput style={styles.input} />
 					</View>
 					<View style={styles.entry}>
-						<CustomText value="Topic(s)" color={theme.white} bold />
-						<TextInput style={styles.input} />
+						<CustomText value="Topic(s)" size={10} color={theme.white} bold />
+						<TextInput multiline numberOfLines={5} style={styles.input} />
 					</View>
 					<View style={styles.entry}>
-						<CustomText value="Duration" color={theme.white} bold />
-						<TextInput style={styles.input} />
+						<CustomText value="Duration" size={10} color={theme.white} bold />
+						<TextInput style={styles.input} placeholder="mins" />
 					</View>
 					<View style={{ alignItems: "center", marginVertical: 80 }}>
 						<Image
 							source={pfp}
-							style={{ width: 100, height: 100, borderRadius: 100 }}
+							style={{ width: 300, height: 100, resizeMode:'contain' }}
 						/>
 					</View>
 					<CustomButton
+						onPress={()=>navigation.navigate('Survey')}
 						text="Search"
 						buttonStyle={{ backgroundColor: theme.darkGrey }}
 						textStyle={{ color: theme.white }}
@@ -49,7 +61,7 @@ export default function FindTutor() {
 const styles = StyleSheet.create({
 	input: {
 		borderRadius: 8,
-		paddingVertical: 20,
+		paddingVertical: 10,
 		paddingHorizontal: 20,
 		marginVertical: 5,
 		backgroundColor: theme.white,

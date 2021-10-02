@@ -13,17 +13,20 @@ export default function CustomButton({
 		button: {
 			borderWidth: 2,
 			borderRadius: 8,
-			paddingVertical: 14,
+			paddingVertical: 10,
 			paddingHorizontal: 10,
 			backgroundColor: inverted ? theme.primaryColor : theme.white,
 			borderColor: inverted ? theme.primaryColor : theme.primaryColor,
+			elevation:1
 		},
 		buttonText: {
 			color: inverted ? theme.white : theme.primaryColor,
 			fontWeight: "bold",
 			textTransform: "uppercase",
-			fontSize: 16,
+			fontSize: 12,
 			textAlign: "center",
+			textAlignVertical:'center',
+			fontFamily: 'F',
 		},
 	});
 	return (

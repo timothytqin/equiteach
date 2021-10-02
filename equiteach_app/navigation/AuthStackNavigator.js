@@ -15,6 +15,16 @@ export default function ChatStackNavigator({ navigation }) {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
+				name="Features"
+				component={Features}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="Login"
+				component={Login}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
 				name="SessionDetails"
 				component={SessionDetails}
 				options={{ headerShown: false }}
@@ -27,16 +37,6 @@ export default function ChatStackNavigator({ navigation }) {
 			<Stack.Screen
 				name="Loading"
 				component={Loading}
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="Features"
-				component={Features}
-				options={{ headerShown: false }}
-			/>
-			<Stack.Screen
-				name="Login"
-				component={Login}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Screen
