@@ -1,7 +1,6 @@
 import axios from "axios";
-import { ngrok } from "../config";
 
 export default axios.create({
-  baseURL: ngrok,
+  baseURL: "https://fh9lh7e7oi.execute-api.us-east-2.amazonaws.com",
   responseType: "json",
 });

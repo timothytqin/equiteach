@@ -8,9 +8,7 @@ const authReducer = (state = initialState, action) => {
     case "signin":
       return {
         error: "",
-        token: action.payload,
-        username: action.username,
-        pfp: action.pfp,
+        user: action.payload,
       };
     case "add_error":
       return { ...state, error: action.payload };
