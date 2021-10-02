@@ -3,16 +3,19 @@ import { ScrollView, StyleSheet, View, Image } from "react-native";
 import Container from "../components/Container";
 import pfp from "../assets/pfp.png";
 import CustomButton from "../components/CustomButton";
+import { useNavigation } from '@react-navigation/native';
 import { theme } from "../theme";
 import CustomText from "../components/CustomText";
 import Card from "../components/Card";
 import Ratings from "../components/Ratings";
 import { Icon } from "react-native-elements";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Survey() {
 	const user = {
 		name: "John Doe",
 		subjects: ["Calculus I", "Calculus II"],
+		languages: ["English", "Spanish"],
 		teachingStyles: {
 			Authority: 5,
 			Coach: 3,
@@ -22,10 +25,10 @@ export default function Survey() {
 		},
 		estimatedCost: 5.55,
 	};
+	const navigation = useNavigation();
 	return (
 
-		<Container style={{ paddingHorizontal: 30, paddingVertical: 80 }}>
-			<ScrollView>
+		<Container style={{ paddingHorizontal: 30, paddingVertical: 40 }}>
 			<Card>
 				<CustomText
 					value={user.name}
@@ -40,6 +43,18 @@ export default function Survey() {
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 				</View>
+				<View
+						style={{
+							flexDirection: "row",
+							flexWrap: "wrap",
+							marginVertical: 0,
+							alignSelf:'center'
+						}}
+					>
+						{user.languages.map((language) => (
+							<CustomButton text={language} buttonStyle={{ margin: 5 }} />
+						))}
+					</View>
 				<CustomText
 					value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
 					size={16}
@@ -48,6 +63,7 @@ export default function Survey() {
 				/>
 				<View style={{ marginVertical: 0 }}>
 					<CustomText value="Expertise" size={16} bold />
+					
 					<View
 						style={{
 							flexDirection: "row",
@@ -60,6 +76,7 @@ export default function Survey() {
 							<CustomButton text={subject} buttonStyle={{ margin: 5 }} />
 						))}
 					</View>
+					
 				</View>
 				<View style={{ marginVertical: 10 }}>
 					<CustomText
@@ -90,7 +107,7 @@ export default function Survey() {
 						justifyContent: "space-between",
 					}}
 				>
-					<View
+					<TouchableOpacity onPress={()=>navigation.navigate('Feedback')}><View
 						style={{
 							justifyContent: "center",
 							alignItems: "center",
@@ -99,7 +116,7 @@ export default function Survey() {
 							borderRadius: 70,
 							backgroundColor: theme.white,
 						}}
-					/>
+					><Icon name="check" type="entypo" color={theme.primaryColor}></Icon></View></TouchableOpacity>
 					<View
 						style={{
 							justifyContent: "center",
@@ -117,9 +134,9 @@ export default function Survey() {
 							size={16}
 							color={theme.white}
 							bold
-						/>
+						></CustomText>
 					</View>
-					<View
+					<TouchableOpacity><View
 						style={{
 							justifyContent: "center",
 							alignItems: "center",
@@ -128,10 +145,9 @@ export default function Survey() {
 							borderRadius: 70,
 							backgroundColor: theme.white,
 						}}
-					><Icon></Icon></View>
+					><Icon name="cross" type="entypo" color={theme.primaryColor}></Icon></View></TouchableOpacity>
 				</View>
 			</Card>
-			</ScrollView>
 		</Container>
 	);
 }

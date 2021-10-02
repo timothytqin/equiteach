@@ -13,7 +13,7 @@ export default function StarSelector({ numStars = 0, setNumStars, size }) {
 						<AntDesign
 							name="staro"
 							size={size ? size : 24}
-							color={theme.black}
+							color={theme.white}
 						/>
 					</TouchableOpacity>
 				);

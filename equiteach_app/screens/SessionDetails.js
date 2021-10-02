@@ -8,6 +8,7 @@ import CustomText from "../components/CustomText";
 import Card from "../components/Card";
 import Ratings from "../components/Ratings";
 import StarSelector from "../components/StarSelector";
+import { Icon } from "react-native-elements";
 
 export default function SessionDetails() {
 	const user = {
@@ -74,14 +75,18 @@ export default function SessionDetails() {
 					</View>
 				</View>
 				<View style={{}}>
-					<CustomText value="Cost" color={theme.white} bold />
+					<CustomText value="Summary" color={theme.white} bold />
 					<CustomText
 						value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
 						color={theme.white}
 					/>
 				</View>
 			</Card>
+			
 		</Container>
+		
+
+
 	);
 }
 const styles = StyleSheet.create({
@@ -96,6 +101,6 @@ const styles = StyleSheet.create({
 	row: {
 		flexDirection: "row",
 		alignItems: "center",
-		marginVertical: 50,
+		marginVertical: 10,
 	},
 });
