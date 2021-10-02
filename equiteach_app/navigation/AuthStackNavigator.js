@@ -9,6 +9,7 @@ import FindTutor from "../screens/FindTutor";
 import Survey from "../screens/Survey";
 import Feedback from "../screens/Feedback";
 import SessionDetails from "../screens/SessionDetails";
+import StudentProfile from "../screens/StudentProfile";
 const Stack = createStackNavigator();
 
 export default function ChatStackNavigator({ navigation }) {
@@ -57,6 +58,11 @@ export default function ChatStackNavigator({ navigation }) {
 			<Stack.Screen
 				name="Welcome"
 				component={Welcome}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="StudentProfile"
+				component={StudentProfile}
 				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>

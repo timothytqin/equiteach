@@ -12,7 +12,7 @@ import Card from "../components/Card";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 
-export default function Profile() {
+export default function StudentProfile() {
   const [loaded] = useFonts({
     A: require("../assets/A.ttf"),
     F: require("../assets/F.ttf"),
@@ -146,12 +146,11 @@ export default function Profile() {
       >
         <Icon name="home" type="ionicon" color="#7398C5"></Icon>
         <Icon
-			onPress={()=>navigation.navigate('Quiz')}
           name="head-question"
           type="material-community"
           color="#FFF"
         ></Icon>
-        <Icon onPress={()=>navigation.navigate('StudentProfile')} name="user-alt" type="font-awesome-5" color="#FFF"></Icon>
+        <Icon name="user-alt" type="font-awesome-5" color="#FFF"></Icon>
       </View>
     </Container>
   );
