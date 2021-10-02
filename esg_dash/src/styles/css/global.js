@@ -6,4 +6,4 @@ export const TYPOGRAPHY = {
 	fontSize: 18,
 };
 
-export const PRIMARY_COLOR = "#5BC096";
+export const PRIMARY_COLOR = "#7398C5";

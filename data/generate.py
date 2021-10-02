@@ -52,12 +52,16 @@ def main():
             "PutRequest": {
                 "Item": {
                     "PK": {
-                        "S": """
+                        "S": "Company" """
 
-        json += f"\"Company#{ticker}\""
         json += """
                     },
                     "SK": {
+                        "S": """
+        json += f"\"{ticker}\""
+        json += """
+                    },
+                    "name": {
                         "S": """
         json += f"\"{tickers[ticker][0]}\""
         json += """
@@ -103,3 +107,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # print([ i for i in tickers])
+        
