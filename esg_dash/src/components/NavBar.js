@@ -19,13 +19,13 @@ import axios from "../lib/axios";
 
 export default function NavBar(props) {
   const [open, setOpen] = React.useState(false);
-  const [company, setCompany] = React.useState(" ");
-  const [donation, setDonation] = React.useState(" ");
+  const [company, setCompany] = React.useState("");
+  const [donation, setDonation] = React.useState("");
   const handleCompany = (event) => {
-    setCompany(event.target.company);
+    setCompany(event.target.value);
   };
   const handleDonation = (event) => {
-    setDonation(event.target.donation);
+    setDonation(event.target.value);
   };
   return (
     <div>
@@ -147,6 +147,9 @@ export default function NavBar(props) {
                     .post("/updateDonation", {
                       company: company,
                       donation: donation,
+                    })
+                    .then(() => {
+                      location.reload(); // eslint-disable-line
                     })
                     .catch((err) => console.log(err));
                 }}

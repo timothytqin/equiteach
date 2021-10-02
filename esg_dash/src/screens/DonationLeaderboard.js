@@ -31,7 +31,7 @@ export default function DonationLeaderboard({ data }) {
           Donations Leaderboard
         </Typography>
       </Grid>
-      {[getDonatedTickers(data)].map((ticker, index) => (
+      {getDonatedTickers(data).map((ticker, index) => (
         <DonationItem data={data} ticker={ticker} rank={index + 1} />
       ))}
     </Grid>
