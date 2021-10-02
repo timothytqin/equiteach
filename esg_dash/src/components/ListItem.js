@@ -35,7 +35,6 @@ export default function ListItem(props) {
 			item
 			style={styles.background}
 			onClick={() => {
-				console.log(`Clicked on ${ticker}`);
 				onClick(ticker);
 			}}
 		>

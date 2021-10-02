@@ -87,7 +87,7 @@ export default function StockDashboard(props) {
 				{data.stocks && (
 					<Grid container>
 						<AreaChart
-							width={window.innerWidth * 0.55}
+							width={window.innerWidth * 0.45}
 							height={350}
 							data={getTimeSeriesData(data.stocks)}
 							margin={{ top: 50 }}
@@ -212,16 +212,21 @@ export default function StockDashboard(props) {
 		>
 			<img
 				src="https://i.kym-cdn.com/entries/icons/facebook/000/029/959/Screen_Shot_2019-06-05_at_1.26.32_PM.jpg"
+				alt="stonks"
 				style={{
-					position: "absolute",
-					left: window.innerWidth * 0.26,
-					top: window.innerHeight * 0.09,
-					width: window.innerWidth * 0.74,
-					height: window.innerHeight * 0.91,
 					opacity: 0.3,
+					width: "100%",
+					height: "100%",
 				}}
 			/>
-			<Typography style={{ ...TYPOGRAPHY, fontSize: 44, color: "#696969" }}>
+			<Typography
+				style={{
+					...TYPOGRAPHY,
+					fontSize: 44,
+					color: "#696969",
+					position: "absolute",
+				}}
+			>
 				Select a stock
 			</Typography>
 		</Grid>

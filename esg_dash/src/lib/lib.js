@@ -35,6 +35,18 @@ export const calcESGScore = (data) => {
 	return Math.round((data.e_score + data.s_score + data.g_score) / 3);
 };
 
+export const formatDonationAmount = (amount) => {
+	console.log(amount);
+	const suffix = ["", "K", "M", "B", "T"];
+	if (amount.length < 4) return amount;
+	if (amount.includes(",")) {
+		const tokens = amount.split(",");
+		return tokens[0] + suffix[tokens.length - 1];
+	}
+	const thousands = Math.floor((amount.length - 1) / 3);
+	return amount.substring(0, amount.length - thousands * 3) + suffix[thousands];
+};
+
 export const getRandInt = (min, max) => {
 	return parseInt(Math.random() * (max - min + 1) + min);
 };

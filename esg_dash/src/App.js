@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "./lib/axios";
 import { getTickerMap } from "./lib/lib";
+import DonationLeaderboard from "./screens/DonationLeaderboard";
 import StockDashboard from "./screens/StockDashboard";
 import StockList from "./screens/StockList";
 
@@ -21,6 +22,7 @@ function App() {
 				data={stockData[selectedTicker]}
 				ticker={selectedTicker}
 			/>
+			<DonationLeaderboard data={stockData} />
 		</div>
 	);
 }
