@@ -1,0 +1,6 @@
+export const theme = {
+	primaryColor: "#7398C5",
+	white: "#fff",
+	black: "#000",
+	grey: "#666",
+};
