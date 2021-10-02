@@ -8,11 +8,17 @@ import Profile from "../screens/Profile";
 import FindTutor from "../screens/FindTutor";
 import Survey from "../screens/Survey";
 import Feedback from "../screens/Feedback";
+import SessionDetails from "../screens/SessionDetails";
 const Stack = createStackNavigator();
 
 export default function ChatStackNavigator({ navigation }) {
 	return (
 		<Stack.Navigator>
+			<Stack.Screen
+				name="SessionDetails"
+				component={SessionDetails}
+				options={{ headerShown: false }}
+			/>
 			<Stack.Screen
 				name="Feedback"
 				component={Feedback}
