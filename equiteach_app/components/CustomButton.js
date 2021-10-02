@@ -16,8 +16,6 @@ export default function CustomButton({
 			paddingVertical: 14,
 			paddingHorizontal: 10,
 			backgroundColor: inverted ? theme.primaryColor : theme.white,
-			marginHorizontal: 16,
-			marginTop: 15,
 			borderColor: inverted ? theme.primaryColor : theme.primaryColor,
 		},
 		buttonText: {
