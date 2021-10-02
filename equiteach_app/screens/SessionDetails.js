@@ -9,19 +9,26 @@ import Card from "../components/Card";
 import Ratings from "../components/Ratings";
 import StarSelector from "../components/StarSelector";
 import { Icon } from "react-native-elements";
+import { useSelector } from "react-redux";
 
-export default function SessionDetails() {
-	const user = {
-		name: "John Doe",
-		subjects: ["Calculus I", "Calculus II"],
-		teachingStyles: {
-			A: 5,
-			B: 3,
-			C: 2,
-			D: 4,
-		},
-		estimatedCost: 5.55,
-	};
+export default function SessionDetails({ route }) {
+	const { session } = route.params;
+
+	console.log(session);
+
+	const user = useSelector((state) => state.auth.user);
+
+	// const user = {
+	// 	name: "John Doe",
+	// 	subjects: ["Calculus I", "Calculus II"],
+	// 	teachingStyles: {
+	// 		A: 5,
+	// 		B: 3,
+	// 		C: 2,
+	// 		D: 4,
+	// 	},
+	// 	estimatedCost: 5.55,
+	// };
 
 	return (
 		<Container style={{ paddingHorizontal: 30, paddingVertical: 80 }}>
@@ -42,11 +49,11 @@ export default function SessionDetails() {
 					}}
 				>
 					<Image
-						source={pfp}
+						source={{ uri: user.avatar }}
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 					<Image
-						source={pfp}
+						source={{ uri: session.avatar }}
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 				</View>
@@ -63,7 +70,10 @@ export default function SessionDetails() {
 						<CustomText value="Duration" color={theme.white} bold />
 					</View>
 					<View style={{ flex: 1, alignItems: "center" }}>
-						<CustomText value="10 mins" color={theme.white} />
+						<CustomText
+							value={`${session.duration} mins`}
+							color={theme.white}
+						/>
 					</View>
 				</View>
 				<View style={styles.row}>
@@ -71,7 +81,10 @@ export default function SessionDetails() {
 						<CustomText value="Cost" color={theme.white} bold />
 					</View>
 					<View style={{ flex: 1, alignItems: "center" }}>
-						<CustomText value="$5.55" color={theme.white} />
+						<CustomText
+							value={`$${(session.duration * session.cpm).toFixed(2)}`}
+							color={theme.white}
+						/>
 					</View>
 				</View>
 				<View style={{}}>
@@ -82,11 +95,7 @@ export default function SessionDetails() {
 					/>
 				</View>
 			</Card>
-			
 		</Container>
-		
-
-
 	);
 }
 const styles = StyleSheet.create({
