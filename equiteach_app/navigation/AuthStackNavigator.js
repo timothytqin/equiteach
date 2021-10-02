@@ -7,36 +7,42 @@ import Login from "../screens/Login";
 import Profile from "../screens/Profile";
 import FindTutor from "../screens/FindTutor";
 import Survey from "../screens/Survey";
+import Feedback from "../screens/Feedback";
 const Stack = createStackNavigator();
 
 export default function ChatStackNavigator({ navigation }) {
 	return (
 		<Stack.Navigator>
-			{/* <Stack.Screen
+			<Stack.Screen
+				name="Feedback"
+				component={Feedback}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
 				name="Loading"
 				component={Loading}
 				options={{ headerShown: false }}
-			/> */}
-			{/* <Stack.Screen
+			/>
+			<Stack.Screen
 				name="Features"
 				component={Features}
 				options={{ headerShown: false }}
-			/> */}
-			{/* <Stack.Screen
+			/>
+			<Stack.Screen
 				name="Login"
 				component={Login}
 				options={{ headerShown: false }}
-			/> */}
-			{/* <Stack.Screen
+			/>
+			<Stack.Screen
 				name="Profile"
 				component={Profile}
 				options={{ headerShown: false }}
-			/> */}
-			{/* <Stack.Screen
+			/>
+			<Stack.Screen
 				name="FindTutor"
 				component={FindTutor}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 			<Stack.Screen
 				name="Survey"
 				component={Survey}
