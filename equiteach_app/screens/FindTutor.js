@@ -1,8 +1,8 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Image, TextInput } from "react-native";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 import Container from "../components/Container";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import pfp from "../assets/tutor.png";
 import CustomButton from "../components/CustomButton";
 import { theme } from "../theme";
@@ -11,50 +11,55 @@ import Card from "../components/Card";
 
 export default function FindTutor() {
 	const [loaded] = useFonts({
-		A: require('../assets/A.ttf'),
-		F: require('../assets/F.ttf')
-	  });
-	  
-	  if (!loaded) {
+		A: require("../assets/A.ttf"),
+		F: require("../assets/F.ttf"),
+	});
+
+	if (!loaded) {
 		return null;
-	  }
+	}
 	const navigation = useNavigation();
 	return (
-		<Container>
-			<View style={{ padding: 40 }}>
-				<Card>
-					<CustomText value="Find a tutor" color={theme.white} size={20} bold />
-					<CustomText
-						value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
-						color={theme.white}
-						size={16}
+		<Container style={{ flex: 1 }}>
+			<Card style={{ flex: 1 }}>
+				<CustomText value="Find a tutor" color={theme.white} size={20} bold />
+				<CustomText
+					value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
+					color={theme.white}
+					size={16}
+				/>
+				<View style={styles.entry}>
+					<CustomText value="Subject" size={10} color={theme.white} bold />
+					<TextInput style={styles.input} />
+				</View>
+				<View style={styles.entry}>
+					<CustomText value="Topic(s)" size={10} color={theme.white} bold />
+					<TextInput multiline numberOfLines={5} style={styles.input} />
+				</View>
+				<View style={styles.entry}>
+					<CustomText value="Duration" size={10} color={theme.white} bold />
+					<TextInput style={styles.input} placeholder="mins" />
+				</View>
+				<View
+					style={{
+						flex: 1,
+						alignItems: "center",
+						marginBottom: 50,
+						justifyContent: "flex-end",
+					}}
+				>
+					<Image
+						source={pfp}
+						style={{ width: 300, height: 100, resizeMode: "contain" }}
 					/>
-					<View style={styles.entry}>
-						<CustomText value="Subject" size={10} color={theme.white} bold />
-						<TextInput style={styles.input} />
-					</View>
-					<View style={styles.entry}>
-						<CustomText value="Topic(s)" size={10} color={theme.white} bold />
-						<TextInput multiline numberOfLines={5} style={styles.input} />
-					</View>
-					<View style={styles.entry}>
-						<CustomText value="Duration" size={10} color={theme.white} bold />
-						<TextInput style={styles.input} placeholder="mins" />
-					</View>
-					<View style={{ alignItems: "center", marginVertical: 80 }}>
-						<Image
-							source={pfp}
-							style={{ width: 300, height: 100, resizeMode:'contain' }}
-						/>
-					</View>
-					<CustomButton
-						onPress={()=>navigation.navigate('Survey')}
-						text="Search"
-						buttonStyle={{ backgroundColor: theme.darkGrey }}
-						textStyle={{ color: theme.white }}
-					/>
-				</Card>
-			</View>
+				</View>
+				<CustomButton
+					onPress={() => navigation.navigate("Survey")}
+					text="Search"
+					buttonStyle={{ backgroundColor: theme.darkGrey }}
+					textStyle={{ color: theme.white }}
+				/>
+			</Card>
 		</Container>
 	);
 }

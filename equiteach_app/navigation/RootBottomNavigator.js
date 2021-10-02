@@ -1,7 +1,8 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import ProfileScreen from "../screens/ProfileScreen";
+import Profile from "../screens/Profile";
+import ProfileStackNavigator from "./ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ export default function RootBottomNavigator() {
 		>
 			<Tab.Screen
 				name="ProfileStack"
-				component={ProfileScreen}
+				component={ProfileStackNavigator}
 				options={{
 					tabBarLabel: "Profile",
 				}}

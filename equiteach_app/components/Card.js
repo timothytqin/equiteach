@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
 		width: "100%",
 		borderRadius: 8,
 		backgroundColor: theme.primaryColor,
-		padding: 20,
+		padding: 30,
 	},
 });

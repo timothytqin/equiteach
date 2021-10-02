@@ -50,153 +50,125 @@ export default function Profile() {
 	}
 	return (
 		<Container>
-			<ScrollView
-				contentContainerStyle={{ paddingHorizontal: 30, paddingVertical: 80 }}
-			>
-				<View style={{ alignItems: "center" }}>
-					<Image
-						source={{
-							uri: user.avatar,
-						}}
-						style={{ width: 100, height: 100, borderRadius: 100 }}
-					/>
-				</View>
-				<Text
-					style={{
-						fontFamily: "A",
-						fontSize: 30,
-						textAlign: "center",
-						color: theme.grey,
+			<View style={{ alignItems: "center" }}>
+				<Image
+					source={{
+						uri: user.avatar,
 					}}
-				>
-					{user.name}
-				</Text>
-				<View
-					style={{
-						flexDirection: "row",
-						flexWrap: "wrap",
-						justifyContent: "center",
-						marginVertical: 1,
-					}}
-				>
-					{[user.primary_language, ...user.secondary_languages].map(
-						(language) => (
-							<CustomButton text={language} buttonStyle={{ margin: 2.5 }} />
-						)
-					)}
-				</View>
-				<View
-					style={{
-						flexDirection: "row",
-						flexWrap: "wrap",
-						justifyContent: "center",
-						marginVertical: 10,
-					}}
-				>
-					{user.subjects.map((subject) => (
-						<CustomButton
-							text={subject}
-							inverted
-							buttonStyle={{ margin: 2.5 }}
-						/>
-					))}
-				</View>
-				<Card>
-					<CustomText
-						value="Connect with a tutor right away"
-						color={theme.white}
-						size={26}
-						bold
-					/>
-					<View
-						style={{ flexDirection: "row", justifyContent: "space-between" }}
-					>
-						<CustomButton
-							onPress={() => navigation.navigate("FindTutor")}
-							text="Get Started"
-							buttonStyle={{
-								marginVertical: 10,
-								width: "40%",
-								backgroundColor: theme.darkGrey,
-							}}
-							textStyle={{ color: theme.white }}
-						/>
-						<Image
-							source={tutor}
-							style={{
-								width: 170,
-								height: 100,
-								resizeMode: "contain",
-								position: "absolute",
-								right: 0,
-								zIndex: 2,
-								top: -40,
-							}}
-						/>
-					</View>
-				</Card>
-				<View>
-					<CustomText
-						value="History"
-						size={25}
-						bold
-						style={{ marginVertical: 20 }}
-					/>
-					<FlatList
-						data={sessionHistory}
-						renderItem={({ item, index }) => (
-							<Card
-								disabled={false}
-								onPress={() => {
-									navigation.navigate("SessionDetails", { session: item });
-								}}
-								style={{
-									marginVertical: 10,
-									flexDirection: "row",
-									alignItems: "center",
-								}}
-							>
-								<View style={{ marginRight: 20 }}>
-									<Image
-										source={{
-											uri: item.avatar,
-										}}
-										style={{ width: 60, height: 60, borderRadius: 100 }}
-									/>
-								</View>
-								<View>
-									<CustomText value={item.SK} color={theme.white} bold />
-									<CustomText
-										value={`Cost: $${(item.cpm * item.duration).toFixed(2)}`}
-										color={theme.white}
-									/>
-									<CustomText
-										value={`Subject: Programming`}
-										color={theme.white}
-									/>
-								</View>
-							</Card>
-						)}
-					/>
-				</View>
-			</ScrollView>
-			<View
+					style={{ width: 100, height: 100, borderRadius: 100 }}
+				/>
+			</View>
+			<Text
 				style={{
-					borderTopLeftRadius: 20,
-					borderTopRightRadius: 20,
-					paddingVertical: 20,
-					backgroundColor: "#E9E9F0",
-					flexDirection: "row",
-					justifyContent: "space-around",
+					fontFamily: "A",
+					fontSize: 30,
+					textAlign: "center",
+					color: theme.grey,
 				}}
 			>
-				<Icon name="home" type="ionicon" color="#7398C5"></Icon>
-				<Icon
-					name="head-question"
-					type="material-community"
-					color="#FFF"
-				></Icon>
-				<Icon name="user-alt" type="font-awesome-5" color="#FFF"></Icon>
+				{user.name}
+			</Text>
+			<View
+				style={{
+					flexDirection: "row",
+					flexWrap: "wrap",
+					justifyContent: "center",
+					marginVertical: 1,
+				}}
+			>
+				{[user.primary_language, ...user.secondary_languages].map(
+					(language) => (
+						<CustomButton text={language} buttonStyle={{ margin: 2.5 }} />
+					)
+				)}
+			</View>
+			<View
+				style={{
+					flexDirection: "row",
+					flexWrap: "wrap",
+					justifyContent: "center",
+					marginVertical: 10,
+				}}
+			>
+				{user.subjects.map((subject) => (
+					<CustomButton text={subject} inverted buttonStyle={{ margin: 2.5 }} />
+				))}
+			</View>
+			<Card>
+				<CustomText
+					value="Connect with a tutor right away"
+					color={theme.white}
+					size={26}
+					bold
+				/>
+				<View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+					<CustomButton
+						onPress={() => navigation.navigate("FindTutor")}
+						text="Get Started"
+						buttonStyle={{
+							marginVertical: 10,
+							width: "40%",
+							backgroundColor: theme.darkGrey,
+						}}
+						textStyle={{ color: theme.white }}
+					/>
+					<Image
+						source={tutor}
+						style={{
+							width: 170,
+							height: 100,
+							resizeMode: "contain",
+							position: "absolute",
+							right: 0,
+							zIndex: 2,
+							top: -40,
+						}}
+					/>
+				</View>
+			</Card>
+			<View>
+				<CustomText
+					value="History"
+					size={25}
+					bold
+					style={{ marginVertical: 20 }}
+				/>
+				<FlatList
+					data={sessionHistory}
+					renderItem={({ item, index }) => (
+						<Card
+							disabled={false}
+							onPress={() => {
+								navigation.navigate("SessionDetails", { session: item });
+							}}
+							style={{
+								marginVertical: 10,
+								flexDirection: "row",
+								alignItems: "center",
+							}}
+						>
+							<View style={{ marginRight: 20 }}>
+								<Image
+									source={{
+										uri: item.avatar,
+									}}
+									style={{ width: 60, height: 60, borderRadius: 100 }}
+								/>
+							</View>
+							<View>
+								<CustomText value={item.SK} color={theme.white} bold />
+								<CustomText
+									value={`Cost: $${(item.cpm * item.duration).toFixed(2)}`}
+									color={theme.white}
+								/>
+								<CustomText
+									value={`Subject: Programming`}
+									color={theme.white}
+								/>
+							</View>
+						</Card>
+					)}
+				/>
 			</View>
 		</Container>
 	);

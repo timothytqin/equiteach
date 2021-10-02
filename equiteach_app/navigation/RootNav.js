@@ -6,10 +6,11 @@ import { useSelector } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 
 export default () => {
-	const token = useSelector((state) => state.auth.token);
+	const user = useSelector((state) => state.auth.user);
+	console.log(user);
 	return (
 		<NavigationContainer ref={navigationRef}>
-			{token ? <RootBottomNavigator /> : <AuthStackNavigator />}
+			{user ? <RootBottomNavigator /> : <AuthStackNavigator />}
 		</NavigationContainer>
 	);
 };

@@ -31,8 +31,8 @@ export default function SessionDetails({ route }) {
 	// };
 
 	return (
-		<Container style={{ paddingHorizontal: 30, paddingVertical: 80 }}>
-			<Card>
+		<Container style={{ flex: 1 }}>
+			<Card style={{ flex: 1 }}>
 				<CustomText
 					value="Session Details"
 					size={36}
@@ -87,7 +87,7 @@ export default function SessionDetails({ route }) {
 						/>
 					</View>
 				</View>
-				<View style={{}}>
+				<View style={{ marginTop: 50 }}>
 					<CustomText value="Summary" color={theme.white} bold />
 					<CustomText
 						value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
