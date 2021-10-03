@@ -97,7 +97,7 @@ export default function Quiz() {
                 alignItems: "center",
                 backgroundColor: theme.primaryColor,
                 padding: 20,
-                borderRadius: "10px",
+                borderRadius: 10,
               }}
             >
               <View style={{ marginRight: 20 }}>
