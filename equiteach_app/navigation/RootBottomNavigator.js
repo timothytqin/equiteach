@@ -1,8 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { SimpleLineIcons } from "@expo/vector-icons";
 import Profile from "../screens/Profile";
 import ProfileStackNavigator from "./ProfileStack";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import MeetingStackNavigator from "./MeetingStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,9 +18,14 @@ export default function RootBottomNavigator() {
 						case "ProfileStack":
 							iconName = "home";
 							break;
+						case "MeetingStack":
+							iconName = "head-question";
+							break;
 					}
 
-					return <SimpleLineIcons name={iconName} size={size} color={color} />;
+					return (
+						<MaterialCommunityIcons name={iconName} size={size} color={color} />
+					);
 				},
 				lazy: false,
 			})}
@@ -41,6 +47,13 @@ export default function RootBottomNavigator() {
 			<Tab.Screen
 				name="ProfileStack"
 				component={ProfileStackNavigator}
+				options={{
+					tabBarLabel: "",
+				}}
+			/>
+			<Tab.Screen
+				name="MeetingStack"
+				component={MeetingStackNavigator}
 				options={{
 					tabBarLabel: "",
 				}}

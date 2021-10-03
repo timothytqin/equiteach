@@ -32,7 +32,7 @@ export default function FindTutor() {
 	const navigation = useNavigation();
 	return (
 		<Container style={{ flex: 1 }}>
-			<Card style={{ flex: 1 }} back>
+			<Card style={{ flex: 1 }}>
 				<CustomText value="Find a tutor" color={theme.white} size={20} bold />
 				<CustomText
 					value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
