@@ -19,6 +19,8 @@ export default function FindTutor() {
 	const user = useSelector((state) => state.auth.user);
 
 	const [subject, setSubject] = useState("");
+	const [topics, setTopics] = useState("");
+	const [duration, setDuration] = useState("");
 
 	const searchTutor = async () => {
 		const url = `https://kmg6zel2gh.execute-api.us-east-2.amazonaws.com/default/equitutormatch?student=${user.PK}&subject=${subject}`;
@@ -49,11 +51,22 @@ export default function FindTutor() {
 				</View>
 				<View style={styles.entry}>
 					<CustomText value="Topic(s)" size={10} color={theme.white} bold />
-					<TextInput multiline numberOfLines={5} style={styles.input} />
+					<TextInput
+						multiline
+						numberOfLines={5}
+						style={styles.input}
+						value={topics}
+						onChangeText={setTopics}
+					/>
 				</View>
 				<View style={styles.entry}>
 					<CustomText value="Duration" size={10} color={theme.white} bold />
-					<TextInput style={styles.input} placeholder="mins" />
+					<TextInput
+						style={styles.input}
+						placeholder="mins"
+						value={duration}
+						onChangeText={setDuration}
+					/>
 				</View>
 				<View
 					style={{
@@ -71,7 +84,10 @@ export default function FindTutor() {
 				<CustomButton
 					onPress={async () => {
 						const tutor = await searchTutor();
-						navigation.navigate("Match", { tutor });
+						navigation.navigate("Match", {
+							tutor,
+							session: { predictedDuration: duration, topics, subject },
+						});
 					}}
 					text="Search"
 					buttonStyle={{ backgroundColor: theme.darkGrey }}

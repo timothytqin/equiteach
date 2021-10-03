@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 export default function SessionDetails({ route }) {
 	const { session } = route.params;
+	console.log(route.params);
 
 	const user = useSelector((state) => state.auth.user);
 
@@ -48,7 +49,7 @@ export default function SessionDetails({ route }) {
 						<CustomText value="Subject" color={theme.white} bold />
 					</View>
 					<View style={{ flex: 1, alignItems: "center" }}>
-						<CustomButton text="Programming" />
+						<CustomButton text={session.subject} />
 					</View>
 				</View>
 				<View style={styles.row}>

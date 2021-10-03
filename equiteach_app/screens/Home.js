@@ -52,7 +52,6 @@ export default function Home() {
   }
   return (
     <Container>
-      <Recorder />
       <View style={{ alignItems: "center" }}>
         <Image
           source={{
@@ -106,7 +105,7 @@ export default function Home() {
         />
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <CustomButton
-            onPress={() => navigation.navigate("FindTutor")}
+            onPress={() => navigation.navigate("MeetingStack")}
             text="Get Started"
             buttonStyle={{
               marginVertical: 10,
