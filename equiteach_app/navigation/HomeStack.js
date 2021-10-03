@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Profile from "../screens/Profile";
+import Home from "../screens/Home";
 import SessionDetails from "../screens/SessionDetails";
 
 const Stack = createStackNavigator();
@@ -9,8 +9,8 @@ export default function ProfileNavigator({ navigation }) {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="Profile"
-				component={Profile}
+				name="Home"
+				component={Home}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Screen

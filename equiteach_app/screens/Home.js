@@ -20,7 +20,7 @@ import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import api from "../api/backendApi";
 
-export default function Profile() {
+export default function Home() {
 	const [loaded] = useFonts({
 		A: require("../assets/A.ttf"),
 		F: require("../assets/F.ttf"),
