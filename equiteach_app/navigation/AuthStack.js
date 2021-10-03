@@ -6,6 +6,7 @@ import LoginTutor from "../screens/LoginTutor";
 import TutorProfile from "../screens/TutorProfile";
 import TutorInfo from "../screens/TutorInfo";
 import TutorCall from "../screens/TutorCall";
+import FeedbackTutor from "../screens/FeedbackTutor";
 const Stack = createStackNavigator();
 
 export default function AuthStackNavigator({ navigation }) {
@@ -39,6 +40,11 @@ export default function AuthStackNavigator({ navigation }) {
 			<Stack.Screen
 				name="TutorCall"
 				component={TutorCall}
+				options={{ headerShown: false }}
+			/>
+			<Stack.Screen
+				name="FeedbackTutor"
+				component={FeedbackTutor}
 				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>

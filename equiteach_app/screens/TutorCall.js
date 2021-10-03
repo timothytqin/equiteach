@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { Camera } from 'expo-camera';
 import LottieView from "lottie-react-native";
 import { Icon } from 'react-native-elements';
+import { navigationRef } from '../RootNavigation';
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function TutorCall() {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   let animation = React.createRef();
+  const navigation = useNavigation();
 
 
 
@@ -43,6 +46,7 @@ export default function TutorCall() {
           </TouchableOpacity>
         </View>
       </Camera>
+      
       <View style={{flexDirection:'row', justifyContent:'space-between'}}>
       <LottieView
 						ref={animation}
@@ -62,11 +66,15 @@ export default function TutorCall() {
 						}}
 						source={require('../assets/audio3.json')}
 					/></View>
+                    
             <View style={{position:'absolute', bottom:40}}><View style={{flexDirection:'row', justifyContent:'space-between', width:'70%', alignSelf:'center'}}>
                 <Icon name="mic"></Icon>
                 <Icon name="video" type="feather"></Icon>
-                <Icon name="call-end"></Icon>
+                <Icon onPress={()=>navigation.navigate('FeedbackTutor',{tutor:'John',duration:10})} name="call-end"></Icon>
             </View></View>
+            <Text onPress={()=>animation.current.play()}>X</Text>
+            <Image source={{uri:'https://www.wittenberg.edu/sites/default/files/2021-08/nouser_0.jpg'}} 
+                    style={{zIndex:3, position:'absolute', bottom:150, height:200, width:200, alignSelf:'center'}}></Image>
     </View>
   );
 }

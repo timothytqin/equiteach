@@ -12,11 +12,72 @@ import StarSelector from "../components/StarSelector";
 import Slider from "@react-native-community/slider";
 import { useSelector } from "react-redux";
 
-export default function Feedback({ route }) {
+export default function FeedbackTutor({ route }) {
 	const { tutor, duration } = route.params;
-	const user = useSelector((state) => state.auth.user);
 	const navigation = useNavigation();
 	const teaching = { Authority: 0, Coach: 0, Activity: 0, Delegator: 0 };
+
+	const [user, setUser] = useState({
+        "GS1_PK": "Tutor#1",
+        "secondary_languages": [
+            "Chinese"
+        ],
+        "avatar": "https://d5t4h5a9.rocketcdn.me/wp-content/uploads/2020/11/Professional-Headshot-Poses-Blog-Post.jpg",
+        "rating": 20,
+        "subjects": [
+            "Algorithm",
+            "Calculus",
+            "Physics",
+            "Chemistry"
+        ],
+        "name": "Steve Han",
+        "num_sessions": 3,
+        "primary_language": "English",
+        "languages": [
+            "English",
+            "Chinese"
+        ],
+        "SK": "Tutor#stevehan",
+        "teaching_styles": [
+            0.3560522178396504,
+            0.3580224049680239,
+            0.17777983552877852,
+            0.1081455416635472
+        ],
+        "PK": "stevehan",
+        "base_cpm": 0.5
+    });
+
+	const [student, setStudent] = useState({
+		"body": {
+			"secondary_languages": [
+				"Chinese"
+			],
+			"avatar": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+			"rating": 20,
+			"subjects": [
+				"Algorithm",
+				"Calculus I",
+				"Calculus II"
+			],
+			"name": "Timothy Qin",
+			"gender": "male",
+			"discount": 0,
+			"num_sessions": 3,
+			"primary_language": "English",
+			"race": "Asian",
+			"learning_styles": [
+				0.4509260768019119,
+				0.45432078648633967,
+				0.05879637173428928,
+				0.03595676497745913
+			],
+			"natural_disaster": false,
+			"SK": "Student#timqin",
+			"PK": "timqin",
+			"age": "20"
+		}
+	})
 
 	const [numStars, setNumStars] = useState(0);
 	return (
@@ -42,7 +103,7 @@ export default function Feedback({ route }) {
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 					<Image
-						source={{ uri: tutor.avatar }}
+						source={{ uri: student.body.avatar }}
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 				</View>
@@ -53,23 +114,10 @@ export default function Feedback({ route }) {
 					center
 				/>
 
-				<View style={{ marginVertical: 50 }}>
-					<CustomText
-						value={`How knowledgable was ${tutor.name}?`}
-						size={16}
-						color={theme.white}
-						bold
-					/>
-					<StarSelector
-						numStars={numStars}
-						setNumStars={setNumStars}
-						size={32}
-					/>
-				</View>
 
 				<View style={{ marginVertical: 10 }}>
 					<CustomText
-						value={`How would you describe ${tutor.name}'s teaching style?`}
+						value={`How would you describe ${student.body.name}'s learning style?`}
 						size={16}
 						color={theme.white}
 						bold
