@@ -21,18 +21,32 @@ import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import api from "../api/backendApi";
 import FlipCard from "react-native-flip-card";
+import Axios from "axios";
 
 export default function Quiz() {
   const [quiz, setQuiz] = useState([]);
+  const [text, setText] = useState([]);
   const [loaded] = useFonts({
     A: require("../assets/A.ttf"),
     F: require("../assets/F.ttf"),
   });
 
   useEffect(() => {
-    fetch("http://8668-12-201-46-242.ngrok.io")
-      .then((response) => response.json())
-      .then((data) => setQuiz(data));
+    Axios.get("http://8668-12-201-46-242.ngrok.io/")
+      .then((response) => {
+        setQuiz(response.data.quiz);
+        setText(response.data.request.text);
+      })
+      .catch((err) => console.log(err));
+    // fetch("http://8668-12-201-46-242.ngrok.io")
+    //   .then((response) => {
+    //     console.log("done");
+    //     console.log(response);
+    //     setQuiz(response);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }, []);
 
   //   const quiz = [
@@ -104,6 +118,8 @@ export default function Quiz() {
           )}
         />
       </View>
+      <CustomText value="Transcript" size={25} bold style={{ marginTop: 20 }} />
+      <CustomText value={text} size={18} style={{ marginTop: 20 }} />
     </Container>
   );
 }
