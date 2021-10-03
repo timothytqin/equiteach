@@ -117,7 +117,7 @@ export default function FeedbackTutor({ route }) {
 
 				<View style={{ marginVertical: 10 }}>
 					<CustomText
-						value={`How would you describe ${tutor.name}'s learning style?`}
+						value={`How would you describe ${student.body.name}'s learning style?`}
 						size={16}
 						color={theme.white}
 						bold
