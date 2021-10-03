@@ -7,16 +7,17 @@ import CustomText from "../components/CustomText";
 import { theme } from "../theme";
 import CustomButton from "../components/CustomButton";
 import { useDispatch } from "react-redux";
-import { signin } from "../actions/authActions";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { signintutor } from "../actions/authActions";
 
-export default function Login() {
+export default function LoginTutor() {
 	const navigation = useNavigation();
 	const dispatch = useDispatch();
 	const [username, setUsername] = useState("");
+
 	const handleLogin = () => {
-		dispatch(signin({ email: username, navigation: navigation }));
-	};
+		navigation.navigate('TutorProfile',{username:username})
+	}
+	
 	return (
 		<Container style={{ flex: 1 }}>
 			<View
@@ -28,9 +29,9 @@ export default function Login() {
 			>
 				<View style={{ paddingHorizontal: 50 }}>
 					<Image source={logo} style={{ width: 60, height: 60 }} />
-					<CustomText value="Login as a student" size={25} bold />
+					<CustomText value="Login as a tutor" size={25} bold />
 					<CustomText
-						value="Welcome back! Please login to connect with tutors around you"
+						value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
 						size={16}
 						color={theme.grey}
 					/>
@@ -54,11 +55,11 @@ export default function Login() {
 						buttonStyle={{ marginVertical: 80 }}
 						onPress={handleLogin}
 					/>
-					<TouchableOpacity onPress={()=>navigation.navigate('LoginTutor')} ><View style={{ flexDirection: "row", justifyContent: "center" }}>
+					<View style={{ flexDirection: "row", justifyContent: "center" }}>
 						<CustomText value="Are you a " />
-						<CustomText value="tutor" bold />
+						<CustomText value="student" bold />
 						<CustomText value="? Login here" />
-					</View></TouchableOpacity>
+					</View>
 				</View>
 			</View>
 		</Container>

@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { useFonts } from "expo-font";
 import Container from "../components/Container";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from "@react-navigation/native";
 import tutor from "../assets/tutor.png";
 import pfp from "../assets/pfp.png";
@@ -20,13 +22,12 @@ import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import api from "../api/backendApi";
 
-export default function Profile() {
+
+export default function Profile({navigation}) {
 	const [loaded] = useFonts({
 		A: require("../assets/A.ttf"),
 		F: require("../assets/F.ttf"),
 	});
-
-	const navigation = useNavigation();
 
 	const user = useSelector((state) => state.auth.user);
 
@@ -42,6 +43,7 @@ export default function Profile() {
 				history.push({ ...session, avatar });
 			}
 			setSessionHistory(history);
+			console.log(history);
 		});
 	}, []);
 
