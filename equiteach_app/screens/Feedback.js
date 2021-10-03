@@ -11,11 +11,17 @@ import Ratings from "../components/Ratings";
 import StarSelector from "../components/StarSelector";
 import Slider from "@react-native-community/slider";
 import { useSelector } from "react-redux";
+import api from "../api/backendApi";
+import { useDispatch } from "react-redux";
+import { signin } from "../actions/authActions";
 
 export default function Feedback({ route }) {
 	const { tutor, duration } = route.params;
 	const user = useSelector((state) => state.auth.user);
+
 	const navigation = useNavigation();
+	const dispatch = useDispatch();
+
 	const teaching = { Authority: 0, Coach: 0, Activity: 0, Delegator: 0 };
 
 	const [numStars, setNumStars] = useState(0);
@@ -107,9 +113,40 @@ export default function Feedback({ route }) {
 				<View style={{ flex: 1, justifyContent: "flex-end" }}>
 					<CustomButton
 						onPress={() => {
-							console.log(numStars);
-							console.log(teaching);
-							// navigation.navigate("SessionDetails");
+							const session = { ...route.params };
+							session["session"] = {
+								...session["session"],
+								rating: numStars,
+								teaching,
+							};
+
+							const data = {
+								...session["session"],
+								student: user.PK,
+								tutor: session.tutor.PK,
+								cost: session.tutor.base_cpm * session.session.duration,
+							};
+							api.post(`/addSession`, data).then((res) => {
+								api
+									.post(`/updateTutorInfo`, {
+										...data,
+										teaching_styles: Object.values(data.teaching),
+									})
+									.then(() => {
+										dispatch(
+											signin({ email: user.PK, navigation: navigation })
+										);
+									});
+							});
+							navigation.navigate("SessionDetails", {
+								session: {
+									avatar: session.tutor.avatar,
+									cpm: session.tutor.base_cpm,
+									cost: session.tutor.base_cpm * data.duration,
+									subject: data.subject,
+									duration: data.duration,
+								},
+							});
 						}}
 						text="Submit"
 						buttonStyle={{ backgroundColor: theme.darkGrey }}

@@ -23,10 +23,9 @@ export default function Meeting({ route }) {
 					console.log(`End Time: ${new Date().getTime()}`);
 					const timedelta = new Date().getTime() - startTime;
 					console.log(`Time Elapsed: ${timedelta}`);
-					navigation.navigate("Feedback", {
-						tutor,
-						duration: Math.ceil(timedelta / 1000 / 60),
-					});
+					const params = { ...route.params };
+					params["session"].duration = Math.ceil(timedelta / 1000 / 60);
+					navigation.navigate("Feedback", params);
 				}}
 			>
 				<CustomText value="End Call" />

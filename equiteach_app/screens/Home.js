@@ -103,7 +103,7 @@ export default function Home() {
 				/>
 				<View style={{ flexDirection: "row", justifyContent: "space-between" }}>
 					<CustomButton
-						onPress={() => navigation.navigate("FindTutor")}
+						onPress={() => navigation.navigate("MeetingStack")}
 						text="Get Started"
 						buttonStyle={{
 							marginVertical: 10,
