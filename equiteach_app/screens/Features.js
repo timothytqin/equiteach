@@ -20,19 +20,19 @@ export default function Features() {
 		{
 			title: "On-Demand Tutor Match",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna",
+				"Equitable access to on demand tutoring for underprevilidged students",
 			img: require("../assets/1.json"),
 		},
 		{
-			title: "Micropayments",
+			title: "Micropayments and Scholarships",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna",
+				"Uber meets tutoring using micropayments and generous scholarships provided by corporations seeking to improve their ESG rating",
 			img: require("../assets/2.json"),
 		},
 		{
-			title: "Feature 3",
+			title: "AI Generated Quiz",
 			description:
-				"Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna",
+				"Automated transcription of tutoring sessions followed by AI powered quizzes",
 			img: require("../assets/3.json"),
 		},
 	];
