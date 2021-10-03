@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { ScrollView, StyleSheet, View, Image, Text } from "react-native";
 import { useFonts } from "expo-font";
 import Container from "../components/Container";
@@ -12,18 +12,30 @@ import Card from "../components/Card";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import Slider from "@react-native-community/slider";
+import { FlatList } from "react-native-gesture-handler";
+import api from "../api/backendApi";
 
 
-export default function StudentProfile() {
+export default function TutorInfo({navigation, route}) {
   const [loaded] = useFonts({
     A: require("../assets/A.ttf"),
     F: require("../assets/F.ttf"),
   });
 
-  const navigation = useNavigation();
+  const {username} = route.params;
 
-  const user = useSelector((state) => state.auth.user);
-  console.log(user);
+
+
+  useEffect(() => {
+    api.get(`/getUserInfo?username=${username}`).then(async (res) => {
+      console.log("User Info:",res.data.body)
+			
+			console.log(res.data.body);
+		});
+  },[]);
+
+  //const user = useSelector((state) => state.auth.user);
+  //console.log(user);
   // const user = {
   // 	name: "John Doe",
   // 	subjects: [
@@ -36,9 +48,40 @@ export default function StudentProfile() {
   // 	languages: ["English",
   // 		"Spanish"]
   // };
+
+  const [user, setUser] = useState({
+        "GS1_PK": "Tutor#1",
+        "secondary_languages": [
+            "Chinese"
+        ],
+        "avatar": "https://d5t4h5a9.rocketcdn.me/wp-content/uploads/2020/11/Professional-Headshot-Poses-Blog-Post.jpg",
+        "rating": 69,
+        "subjects": [
+            "Algorithm",
+            "Calculus",
+            "Physics",
+            "Chemistry"
+        ],
+        "name": "Steve Han",
+        "num_sessions": 15,
+        "primary_language": "English",
+        "languages": [
+            "English",
+            "Chinese"
+        ],
+        "SK": "Tutor#stevehan",
+        "teaching_styles": [
+            0.32310732097958506,
+            0.32304223106485075,
+            0.3230987975971899,
+            0.030751650358374304
+        ],
+        "PK": "stevehan",
+        "base_cpm": 0.5
+    })
   const demographic = {'ethnicity':'Asian','location':'Plano,TX','gender':'Male','income':'50000'}
   var i = 0;
-  var learning = [['Visual',user.learning_styles[0]],['Auditory',user.learning_styles[1]],['Kinesthetic',user.learning_styles[2]],['Reading/Writing',user.learning_styles[3]]];
+  var teaching = [['Authority',user.teaching_styles[0]],['Coach',user.teaching_styles[1]],['Activity',user.teaching_styles[2]],['Delegator',user.teaching_styles[3]]];
   
   if (!loaded) {
     return null;
@@ -49,9 +92,9 @@ export default function StudentProfile() {
         contentContainerStyle={{ paddingHorizontal: 30, paddingVertical: 80 }}
       >
         <View style={{ alignItems: "center" }}>
-          <mage
+          <Image
             source={{
-              uri: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+              uri: user.avatar,
             }}
             style={{ width: 100, height: 100, borderRadius: 100 }}
           />
@@ -66,11 +109,7 @@ export default function StudentProfile() {
         >
           {user.name}
         </Text>
-        <Text style={{textAlign:'center', fontFamily:'F', color:theme.grey, textAlignVertical:'center'}}>{user.gender == 'male' ? 'Male' : 'Female'}, {user.age}</Text>
-        <View style={{flexDirection:'row', alignSelf:'center', marginTop:'5%'}}>
-                <Icon name="location-sharp" type="ionicon" color={theme.grey}></Icon>
-                <Text style={{textAlign:'center', fontFamily:'F', color:theme.grey, textAlignVertical:'center'}}>{demographic.location}</Text>
-        </View>
+      
                 
         <View
           style={{
@@ -105,15 +144,15 @@ export default function StudentProfile() {
           ))}
           
         </View>
-        <Text style={{fontFamily:'A', fontSize:18, color:theme.primaryColor}}>Learning Styles</Text>
-        {learning.map((learn) => (
-            <View style={{flexDirection:'row', justifyContent:'space-between'}}><Text style={{fontFamily:'F', textAlignVertical:'center', color:theme.primaryColor}}>{learn[0]}</Text>
+        <Text style={{fontFamily:'A', fontSize:18, color:theme.primaryColor}}>Teaching Styles</Text>
+        {teaching.map((teach) => (
+            <View style={{flexDirection:'row', justifyContent:'space-between'}}><Text style={{fontFamily:'F', textAlignVertical:'center', color:theme.primaryColor}}>{teach[0]}</Text>
             <Slider
                 style={{ width: 200, height: 40 }}
                 minimumValue={0}
                 thumbTintColor={theme.primaryColor}
                 maximumValue={1}
-                value={learn[1]}
+                value={teach[1]}
                 disabled
                 minimumTrackTintColor={theme.primaryColor}
                 maximumTrackTintColor={theme.primaryColor}

@@ -7,7 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 export default () => {
 	const user = useSelector((state) => state.auth.user);
-	console.log(user);
+	console.log("USER:",user);
 	return (
 		<NavigationContainer ref={navigationRef}>
 			{user ? <RootBottomNavigator /> : <AuthStackNavigator />}

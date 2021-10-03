@@ -10,6 +10,11 @@ const authReducer = (state = initialState, action) => {
         error: "",
         user: action.payload,
       };
+      case "signintutor":
+      return {
+        error: "",
+        user: action.payload,
+      };
     case "add_error":
       return { ...state, error: action.payload };
     default:

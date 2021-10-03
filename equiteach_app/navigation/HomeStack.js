@@ -2,7 +2,8 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import SessionDetails from "../screens/SessionDetails";
-import Quiz from "../screens/Quiz";
+import StudentProfile from "../screens/StudentProfile";
+import TutorProfile from "../screens/TutorProfile";
 
 const Stack = createStackNavigator();
 

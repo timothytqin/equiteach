@@ -24,6 +24,7 @@ export default function RootBottomNavigator() {
 						case "ProfileStack":
 							iconName = "account";
 							break;
+						
 					}
 
 					return (
