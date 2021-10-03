@@ -71,7 +71,7 @@ export default function FindTutor() {
 				<CustomButton
 					onPress={async () => {
 						const tutor = await searchTutor();
-						navigation.navigate("Survey", { tutor });
+						navigation.navigate("Match", { tutor });
 					}}
 					text="Search"
 					buttonStyle={{ backgroundColor: theme.darkGrey }}

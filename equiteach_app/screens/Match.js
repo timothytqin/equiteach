@@ -12,7 +12,7 @@ import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import api from "../api/backendApi";
 
-export default function Survey({ route }) {
+export default function Match({ route }) {
 	const tutorDetails = route.params.tutor.qs[0];
 
 	const [tutor, setTutor] = useState();

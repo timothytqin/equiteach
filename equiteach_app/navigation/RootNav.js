@@ -1,5 +1,5 @@
 import React from "react";
-import AuthStackNavigator from "./AuthStackNavigator";
+import AuthStackNavigator from "./AuthStack";
 import RootBottomNavigator from "./RootBottomNavigator";
 import { navigationRef } from "../RootNavigation";
 import { useSelector } from "react-redux";

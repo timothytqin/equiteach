@@ -1,21 +1,21 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import FindTutor from "../screens/FindTutor";
-import Match from "../screens/Match";
+import Profile from "../screens/Profile";
+import SessionDetails from "../screens/SessionDetails";
 
 const Stack = createStackNavigator();
 
-export default function MeetingStackNavigator({ navigation }) {
+export default function ProfileNavigator({ navigation }) {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen
-				name="FindTutor"
-				component={FindTutor}
+				name="Profile"
+				component={Profile}
 				options={{ headerShown: false }}
 			/>
 			<Stack.Screen
-				name="Match"
-				component={Match}
+				name="SessionDetails"
+				component={SessionDetails}
 				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>

@@ -1,9 +1,9 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Profile from "../screens/Profile";
 import ProfileStackNavigator from "./ProfileStack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MeetingStackNavigator from "./MeetingStack";
+import HomeStackNavigator from "./HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,11 +15,14 @@ export default function RootBottomNavigator() {
 					let iconName;
 
 					switch (route.name) {
-						case "ProfileStack":
+						case "HomeStack":
 							iconName = "home";
 							break;
 						case "MeetingStack":
 							iconName = "head-question";
+							break;
+						case "ProfileStack":
+							iconName = "account";
 							break;
 					}
 
@@ -45,8 +48,8 @@ export default function RootBottomNavigator() {
 			}}
 		>
 			<Tab.Screen
-				name="ProfileStack"
-				component={ProfileStackNavigator}
+				name="HomeStack"
+				component={HomeStackNavigator}
 				options={{
 					tabBarLabel: "",
 				}}
@@ -54,6 +57,13 @@ export default function RootBottomNavigator() {
 			<Tab.Screen
 				name="MeetingStack"
 				component={MeetingStackNavigator}
+				options={{
+					tabBarLabel: "",
+				}}
+			/>
+			<Tab.Screen
+				name="ProfileStack"
+				component={ProfileStackNavigator}
 				options={{
 					tabBarLabel: "",
 				}}
