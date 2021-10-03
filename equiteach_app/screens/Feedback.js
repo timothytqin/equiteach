@@ -138,6 +138,7 @@ export default function Feedback({ route }) {
 										);
 									});
 							});
+							navigation.popToTop();
 							navigation.navigate("SessionDetails", {
 								session: {
 									avatar: session.tutor.avatar,
