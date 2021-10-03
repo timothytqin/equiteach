@@ -5,7 +5,10 @@ import { theme } from "../theme";
 export default function Container({ style, children }) {
 	return (
 		<SafeAreaView style={{ ...styles.container }}>
-			<ScrollView style={{ padding: 20 }} contentContainerStyle={{ ...style }}>
+			<ScrollView
+				style={{ paddingHorizontal: 20 }}
+				contentContainerStyle={{ ...style }}
+			>
 				{children}
 			</ScrollView>
 		</SafeAreaView>

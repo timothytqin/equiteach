@@ -127,12 +127,7 @@ export default function Profile() {
 				</View>
 			</Card>
 			<View>
-				<CustomText
-					value="History"
-					size={25}
-					bold
-					style={{ marginVertical: 20 }}
-				/>
+				<CustomText value="History" size={25} bold style={{ marginTop: 20 }} />
 				<FlatList
 					data={sessionHistory}
 					renderItem={({ item, index }) => (

@@ -15,7 +15,7 @@ export default function RootBottomNavigator() {
 
 					switch (route.name) {
 						case "ProfileStack":
-							iconName = "user";
+							iconName = "home";
 							break;
 					}
 
@@ -42,7 +42,7 @@ export default function RootBottomNavigator() {
 				name="ProfileStack"
 				component={ProfileStackNavigator}
 				options={{
-					tabBarLabel: "Profile",
+					tabBarLabel: "",
 				}}
 			/>
 		</Tab.Navigator>

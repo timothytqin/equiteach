@@ -14,25 +14,11 @@ import { useSelector } from "react-redux";
 export default function SessionDetails({ route }) {
 	const { session } = route.params;
 
-	console.log(session);
-
 	const user = useSelector((state) => state.auth.user);
-
-	// const user = {
-	// 	name: "John Doe",
-	// 	subjects: ["Calculus I", "Calculus II"],
-	// 	teachingStyles: {
-	// 		A: 5,
-	// 		B: 3,
-	// 		C: 2,
-	// 		D: 4,
-	// 	},
-	// 	estimatedCost: 5.55,
-	// };
 
 	return (
 		<Container style={{ flex: 1 }}>
-			<Card style={{ flex: 1 }}>
+			<Card style={{ flex: 1 }} back>
 				<CustomText
 					value="Session Details"
 					size={36}
