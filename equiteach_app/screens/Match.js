@@ -14,6 +14,7 @@ import api from "../api/backendApi";
 
 export default function Match({ route }) {
 	const tutorDetails = route.params.tutor.qs[0];
+	const { topics, duration } = route.params;
 
 	const [tutor, setTutor] = useState();
 	useEffect(() => {
@@ -153,9 +154,9 @@ export default function Match({ route }) {
 						</View>
 						<TouchableOpacity
 							onPress={() => {
-								navigation.navigate("Meeting", {
-									tutor: { ...tutor, ...tutorDetails },
-								});
+								const params = { ...route.params };
+								params["tutor"] = { ...params["tutor"], ...tutor };
+								navigation.navigate("Meeting", params);
 							}}
 						>
 							<View

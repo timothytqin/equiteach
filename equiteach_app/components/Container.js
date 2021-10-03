@@ -6,7 +6,7 @@ export default function Container({ style, children }) {
 	return (
 		<SafeAreaView style={{ ...styles.container }}>
 			<ScrollView
-				style={{ paddingHorizontal: 20 }}
+				style={{ paddingHorizontal: 20, paddingVertical: 10 }}
 				contentContainerStyle={{ ...style }}
 			>
 				{children}

@@ -11,7 +11,7 @@ import CustomText from "../components/CustomText";
 import Card from "../components/Card";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import api from "../api/backendApi";
 
 
@@ -162,6 +162,60 @@ export default function TutorProfile({navigation, route}) {
             />
           ))}
         </View>
+
+        <Text
+          style={{
+            fontFamily: "A",
+            fontSize: 18,
+            textAlign: "left",
+            color: theme.grey,
+          }}
+        >
+          Upcoming Session
+        </Text>
+
+        <Card
+							disabled={false}
+							style={{
+								marginVertical: 10,
+								flexDirection: "row",
+								alignItems: "center",
+                backgroundColor:theme.yellow
+							}}
+						>
+							<View style={{ marginRight: 20 }}>
+								<Image
+									source={{
+										uri: user.avatar,
+									}}
+									style={{ width: 60, height: 60, borderRadius: 100 }}
+								/>
+							</View>
+							<TouchableOpacity onPress={()=>navigation.navigate('TutorCall')}><View>
+								<CustomText value={user.subjects[0]} color={theme.white} bold />
+								<CustomText
+									value={`Estimated Earnings: $0.5`}
+									color={theme.white}
+								/>
+								<CustomText
+									value={`Duration: 10 mins`}
+									color={theme.white}
+								/>
+							</View></TouchableOpacity>
+						</Card>
+
+
+
+            <Text
+          style={{
+            fontFamily: "A",
+            fontSize: 18,
+            textAlign: "left",
+            color: theme.grey,
+          }}
+        >
+          Session History
+        </Text>
 
 
         <FlatList
