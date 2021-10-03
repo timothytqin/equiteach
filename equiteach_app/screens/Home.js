@@ -20,7 +20,6 @@ import Card from "../components/Card";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
 import api from "../api/backendApi";
-import Recorder from "../components/Recorder";
 
 export default function Home() {
   const [loaded] = useFonts({
