@@ -3,36 +3,27 @@ import { ScrollView, StyleSheet, View, Image, Text } from "react-native";
 import Container from "../components/Container";
 import pfp from "../assets/pfp.png";
 import CustomButton from "../components/CustomButton";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { theme } from "../theme";
 import CustomText from "../components/CustomText";
 import Card from "../components/Card";
 import Ratings from "../components/Ratings";
 import StarSelector from "../components/StarSelector";
-import Slider from '@react-native-community/slider';
+import Slider from "@react-native-community/slider";
+import { useSelector } from "react-redux";
 
-
-export default function Feedback() {
-	const user = {
-		name: "John Doe",
-		subjects: ["Calculus I", "Calculus II"],
-		teachingStyles: [
-			["Authority",0],
-			["Coach", 0],
-			["Activity", 0],
-			["Delegator", 0]
-		],
-		estimatedCost: 5.55,
-	};
+export default function Feedback({ route }) {
+	const { tutor, duration } = route.params;
+	const user = useSelector((state) => state.auth.user);
 	const navigation = useNavigation();
-	let teaching = {"Authority":0,"Coach":0,"Activity":0,"Delegator":0};
+	const teaching = { Authority: 0, Coach: 0, Activity: 0, Delegator: 0 };
 
 	const [numStars, setNumStars] = useState(0);
 	return (
-		<Container style={{ paddingHorizontal: 30, paddingVertical: 80 }}>
-			<Card>
+		<Container style={{ flex: 1 }}>
+			<Card style={{ flex: 1 }}>
 				<CustomText
-					value={user.name}
+					value={tutor.name}
 					size={36}
 					color={theme.white}
 					center
@@ -47,11 +38,11 @@ export default function Feedback() {
 					}}
 				>
 					<Image
-						source={pfp}
+						source={{ uri: user.avatar }}
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 					<Image
-						source={pfp}
+						source={{ uri: tutor.avatar }}
 						style={{ width: 100, height: 100, borderRadius: 100 }}
 					/>
 				</View>
@@ -64,7 +55,7 @@ export default function Feedback() {
 
 				<View style={{ marginVertical: 50 }}>
 					<CustomText
-						value={`How knowledgable was ${user.name}?`}
+						value={`How knowledgable was ${tutor.name}?`}
 						size={16}
 						color={theme.white}
 						bold
@@ -78,37 +69,53 @@ export default function Feedback() {
 
 				<View style={{ marginVertical: 10 }}>
 					<CustomText
-						value={`How would you describe ${user.name}'s teaching style?`}
+						value={`How would you describe ${tutor.name}'s teaching style?`}
 						size={16}
 						color={theme.white}
 						bold
 					/>
-					
-					{user.teachingStyles.map((teach) => (
-							<View style={{flexDirection:'row', justifyContent:'space-between'}}><Text style={{fontFamily:'F', color:"#FFF", textAlignVertical:'center'}}>{teach[0].toString()}</Text>
-							<Slider
-						style={{width: 200, height: 40}}
-						minimumValue={0}
-						thumbTintColor="#FFF"
-						maximumValue={5}
-						step={1}
-						value={teaching[teach]}
-						onValueChange={(e)=>{teaching[teach[0]]=e; console.log(teaching)}}
-						minimumTrackTintColor="#FFFFFF"
-						maximumTrackTintColor="#000000"
-					/></View>
-							
-						))}
-					
-					
-				</View>
-				<CustomButton
 
-					onPress={()=>navigation.navigate('SessionDetails')}
-					text="Submit"
-					buttonStyle={{ backgroundColor: theme.darkGrey }}
-					textStyle={{ color: theme.white }}
-				/>
+					{Object.keys(teaching).map((teach) => (
+						<View
+							style={{ flexDirection: "row", justifyContent: "space-between" }}
+						>
+							<Text
+								style={{
+									fontFamily: "F",
+									color: "#FFF",
+									textAlignVertical: "center",
+								}}
+							>
+								{teach}
+							</Text>
+							<Slider
+								style={{ width: 200, height: 40 }}
+								minimumValue={0}
+								thumbTintColor="#FFF"
+								maximumValue={5}
+								step={1}
+								value={teaching[teach]}
+								onValueChange={(e) => {
+									teaching[teach] = e;
+								}}
+								minimumTrackTintColor="#FFFFFF"
+								maximumTrackTintColor="#000000"
+							/>
+						</View>
+					))}
+				</View>
+				<View style={{ flex: 1, justifyContent: "flex-end" }}>
+					<CustomButton
+						onPress={() => {
+							console.log(numStars);
+							console.log(teaching);
+							// navigation.navigate("SessionDetails");
+						}}
+						text="Submit"
+						buttonStyle={{ backgroundColor: theme.darkGrey }}
+						textStyle={{ color: theme.white }}
+					/>
+				</View>
 			</Card>
 		</Container>
 	);

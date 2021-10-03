@@ -151,7 +151,13 @@ export default function Match({ route }) {
 								bold
 							></CustomText>
 						</View>
-						<TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => {
+								navigation.navigate("Meeting", {
+									tutor: { ...tutor, ...tutorDetails },
+								});
+							}}
+						>
 							<View
 								style={{
 									justifyContent: "center",
