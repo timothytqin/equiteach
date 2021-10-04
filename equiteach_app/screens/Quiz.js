@@ -32,7 +32,7 @@ export default function Quiz() {
   });
 
   useEffect(() => {
-    Axios.get("http://8668-12-201-46-242.ngrok.io/")
+    Axios.get("http://5084-12-245-120-6.ngrok.io")
       .then((response) => {
         setQuiz(response.data.quiz);
         setText(response.data.request.text);
