@@ -20,7 +20,7 @@ export default function Features() {
 		{
 			title: "On-Demand Tutor Match",
 			description:
-				"Equitable access to on demand tutoring for underprevilidged students",
+				"Equitable access to on-demand tutoring for underprevilidged students based on learning and teaching styles",
 			img: require("../assets/1.json"),
 		},
 		{

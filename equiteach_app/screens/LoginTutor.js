@@ -31,7 +31,7 @@ export default function LoginTutor() {
 					<Image source={logo} style={{ width: 60, height: 60 }} />
 					<CustomText value="Login as a tutor" size={25} bold />
 					<CustomText
-						value="Lorem ipsum dolor sit amet, consectetur  adipiscing elit, sed do eiusmod tempor  incididunt ut labore et dolore magna"
+						value="Login to manage upcoming tutoring sessions, connect with students and earn"
 						size={16}
 						color={theme.grey}
 					/>
